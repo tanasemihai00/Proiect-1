@@ -1,3 +1,5 @@
+
+
 from functools import reduce
 from utilizator import Utilizator
 from carte import Carte
@@ -19,8 +21,16 @@ class Biblioteca:
     def cauta_dupa_categorie(self, categorie):
         return list(filter(lambda x: x.categorie == categorie, self.lista_carti))
 
+    def cauta_dupa_an(self, an):
+        return [carte for carte in self.lista_carti if carte.an_publicatie == an]
+
     def cauta_dupa_rating(self, min_rating):
         return list(filter(lambda x: x.medie_rating() >= min_rating, self.lista_carti))
+
+    def cauta_dupa_autor(self, autor_nume):
+        return [carte for carte in self.lista_carti if carte.autor.nume.lower() == autor_nume.lower()]
+
+
 
     def statistici_globale(self):
         total_carti = len(self.lista_carti)
